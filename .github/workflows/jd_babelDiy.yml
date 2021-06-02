@@ -6,21 +6,20 @@ name: jd_babelDiy
 on:
   workflow_dispatch:
   schedule:
-    - cron: '10 * * * *'
+    - cron: "10 * * * *"
   watch:
     types: started
   repository_dispatch:
     types: babelDiy
 jobs:
   build:
-
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: FutureArrive/test
+          repository: huang451179670/js_script
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -35,7 +34,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【总裁送好礼】'
+      - name: "运行 【总裁送好礼】"
         run: |
           node jd_babelDiy.js
         env:
